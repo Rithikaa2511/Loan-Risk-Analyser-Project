@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Raju",
+        "income": "50000",
+        "loan": "1500000",
+        "risk": "High Risk",
+        "probability": 95.0,
+        "time": "2026-06-29 19:48:30.724502"
+    },
+    {
+        "name": "Rithu",
+        "income": "50000",
+        "loan": "1000000",
+        "risk": "High Risk",
+        "probability": 71.0,
+        "time": "2026-06-29 19:49:48.967608"
+    },
+    {
+        "name": "Sumathi",
+        "income": "75000",
+        "loan": "200000",
+        "risk": "Low Risk",
+        "probability": 13.0,
+        "time": "2026-06-29 19:52:24.644717"
+    }
+]

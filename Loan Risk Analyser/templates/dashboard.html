@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="title">Loan Default Risk Analysis</h1>
+
+<p class="subtitle">
+    AI-Powered Credit Risk Assessment Dashboard
+</p>
+
+<a href="/predict">
+    <button class="btn">
+        ➕ New Prediction
+    </button>
+</a>
+
+<div class="cards">
+
+    <div class="card">
+        <h3>Total Applications</h3>
+        <h2>1,247</h2>
+        <p>+12% This Month</p>
+    </div>
+
+    <div class="card">
+        <h3>Approved</h3>
+        <h2 style="color:#4ade80;">856</h2>
+        <p>68.6%</p>
+    </div>
+
+    <div class="card">
+        <h3>Rejected</h3>
+        <h2 style="color:#f87171;">391</h2>
+        <p>31.4%</p>
+    </div>
+
+    <div class="card">
+        <h3>High Risk</h3>
+        <h2 style="color:#facc15;">147</h2>
+        <p>11.8%</p>
+    </div>
+
+</div>
+
+<br>
+
+<div class="form-card">
+
+    <h2 class="form-title">🤖 AI Insights</h2>
+
+    <ul style="padding-left:20px; line-height:35px;">
+
+        <li>Loan approvals increased by 8% this month.</li>
+
+        <li>Applicants with higher credit scores have lower default risk.</li>
+
+        <li>Most rejected applications have low annual income.</li>
+
+        <li>Self-employed applicants show higher loan default probability.</li>
+
+    </ul>
+
+</div>
+
+<div class="chart-box">
+
+    <h2>Loan Applications Overview</h2>
+
+    <canvas id="barChart"></canvas>
+
+</div>
+
+<br>
+
+<div class="chart-box">
+
+    <h2>Risk Distribution</h2>
+
+    <canvas id="pieChart"></canvas>
+
+</div>
+
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="title">Prediction History</h1>
+
+<p class="subtitle">
+    View all previous loan risk predictions.
+</p>
+
+<div class="form-card">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+
+        <h2>History</h2>
+
+        <a href="/predict">
+            <button class="btn">
+                ➕ New Prediction
+            </button>
+        </a>
+
+    </div>
+
+    {% if history and history|length > 0 %}
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Applicant</th>
+                <th>Loan Amount</th>
+                <th>Risk</th>
+                <th>Decision</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for item in history %}
+
+            <tr>
+
+                <td>{{ loop.index }}</td>
+
+                <td>{{ item.name }}</td>
+
+                <td>₹{{ item.loan }}</td>
+
+                {% if item.risk == "Low Risk" %}
+                    <td style="color:green;">{{ item.risk }}</td>
+                    <td>Approved</td>
+
+                {% elif item.risk == "Medium Risk" %}
+                    <td style="color:orange;">{{ item.risk }}</td>
+                    <td>Review</td>
+
+                {% else %}
+                    <td style="color:red;">{{ item.risk }}</td>
+                    <td>Rejected</td>
+                {% endif %}
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% else %}
+
+        <p style="text-align:center; color:gray;">
+            No prediction history found.
+        </p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

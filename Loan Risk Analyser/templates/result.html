@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="title">Loan Risk Analysis Result</h1>
+<p class="subtitle">AI-Powered Loan Default Prediction</p>
+
+<div class="result-card">
+
+    <h2>Applicant Details</h2>
+    <hr><br>
+
+    <p><strong>Name :</strong> {{ name }}</p>
+    <p><strong>Age :</strong> {{ age }}</p>
+    <p><strong>Gender :</strong> {{ gender }}</p>
+    <p><strong>Monthly Income :</strong> ₹{{ income }}</p>
+    <p><strong>Loan Amount :</strong> ₹{{ loan }}</p>
+    <p><strong>Credit Score :</strong> {{ score }}</p>
+
+    <br>
+
+    {% if risk == "Low Risk" %}
+
+        <h2 class="low-risk">🟢 {{ risk }}</h2>
+        <progress value="25" max="100"></progress>
+
+    {% else %}
+
+        <h2 class="high-risk">🔴 {{ risk }}</h2>
+        <progress value="82" max="100"></progress>
+
+    {% endif %}
+
+    <br><br>
+
+    <h2>Probability: {{ probability }}</h2>
+
+    <br>
+
+    <h3>Loan Decision</h3>
+    <p>{{ decision }}</p>
+
+    <br>
+
+    <h3>Recommendation</h3>
+
+    {% if risk == "Low Risk" %}
+        <p class="low-risk">
+            ✅ Applicant has a low chance of default.<br>
+            Loan can be approved.
+        </p>
+    {% else %}
+        <p class="high-risk">
+            ⚠ Applicant has a high chance of default.<br>
+            Verify income documents and credit history before approval.
+        </p>
+    {% endif %}
+
+    <br>
+
+    <!-- 📊 PIE CHART SECTION (SMALL) -->
+    <h3>Risk Visualization</h3>
+
+    <div style="width:200px; height:200px; margin:auto;">
+        <canvas id="riskChart"></canvas>
+    </div>
+
+    <br>
+
+    <!-- 📄 ACTION BUTTONS -->
+    <a href="/download">
+        <button class="btn">📄 Download Report</button>
+    </a>
+
+    <a href="/history">
+        <button class="btn">📚 View History</button>
+    </a>
+
+    <a href="/predict">
+        <button class="btn">🔄 New Prediction</button>
+    </a>
+
+    <a href="/">
+        <button class="btn">🏠 Dashboard</button>
+    </a>
+
+</div>
+
+<!-- 📊 CHART SCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ctx = document.getElementById('riskChart');
+
+let riskValue = "{{ risk }}";
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["Low Risk", "High Risk"],
+        datasets: [{
+            data: riskValue === "Low Risk" ? [80, 20] : [20, 80]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
+});
+</script>
+
+{% endblock %}

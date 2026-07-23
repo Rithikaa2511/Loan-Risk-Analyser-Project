@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1 class="title">Loan Default Prediction</h1>
+
+<p class="subtitle">
+    Enter applicant details to predict loan default risk.
+</p>
+
+<form action="/analyse" method="POST">
+
+    <!-- Personal Information -->
+
+    <div class="form-card">
+
+        <h2 class="form-title">👤 Personal Information</h2>
+
+        <div class="row">
+
+            <div class="input-group">
+                <label>Applicant Name</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Age</label>
+                <input type="number" name="age" required>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-group">
+                <label>Gender</label>
+
+                <select name="gender">
+
+                    <option>Male</option>
+
+                    <option>Female</option>
+
+                </select>
+
+            </div>
+
+            <div class="input-group">
+                <label>Marital Status</label>
+
+                <select name="marital">
+
+                    <option>Single</option>
+
+                    <option>Married</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Employment -->
+
+    <div class="form-card">
+
+        <h2 class="form-title">💼 Employment Information</h2>
+
+        <div class="row">
+
+            <div class="input-group">
+                <label>Employment Type</label>
+
+                <select name="employment">
+
+                    <option>Salaried</option>
+
+                    <option>Self Employed</option>
+
+                    <option>Business</option>
+
+                </select>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Work Experience (Years)</label>
+
+                <input type="number" name="experience">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Financial -->
+
+    <div class="form-card">
+
+        <h2 class="form-title">💰 Financial Information</h2>
+
+        <div class="row">
+
+            <div class="input-group">
+
+                <label>Monthly Income</label>
+
+                <input type="number" name="income" required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Loan Amount</label>
+
+                <input type="number" name="loan_amount">
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="input-group">
+
+                <label>Loan Term (Months)</label>
+
+                <input type="number" name="term">
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Existing Loans</label>
+
+                <input type="number" name="existing">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Credit -->
+
+    <div class="form-card">
+
+        <h2 class="form-title">📊 Credit Information</h2>
+
+        <div class="row">
+
+            <div class="input-group">
+
+                <label>Credit Score</label>
+
+                <input type="number" name="credit_score">
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Savings</label>
+
+                <input type="number" name="savings">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <center>
+
+        <button class="btn" type="submit">
+
+            🔍 Analyze Risk
+
+        </button>
+
+    </center>
+
+</form>
+
+{% endblock %}
